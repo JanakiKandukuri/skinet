@@ -5,6 +5,7 @@ import { IBrand } from '../shared/interface/brand';
 import { IProductTypes } from '../shared/interface/productTypes';
 import {map} from 'rxjs/operators';
 import { ShopParams } from '../shared/interface/shopParams';
+import { IProduct } from '../shared/interface/product';
 
 @Injectable({
   providedIn: 'root', //meaning provided in root (app-module). services are singletons meaning they are always available as long as our app is available.
@@ -48,5 +49,9 @@ export class ShopService {
 
   getProductByTypes() {
     return this.http.get<IProductTypes[]>(this.baseUrl + 'products/types');
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'products/'+id);
   }
 }
